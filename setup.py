@@ -90,6 +90,7 @@ dist = setup(
             'ml-supervisorctl = supervisor.supervisorctl:main',
             'ml-echo_supervisord_conf = supervisor.confecho:main',
             'ml-pidproxy = supervisor.pidproxy:main',
+            'ml-task_supervisor = supervisor.supervisorrpc:main'
         ],
     },
 )

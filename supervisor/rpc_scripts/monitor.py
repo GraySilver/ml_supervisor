@@ -5,11 +5,11 @@ from xmlrpc.client import ServerProxy
 
 class SupervisorMonitor:
 
-    def __init__(self, conf):
-        self.user = conf['username']
-        self.password = conf['password']
-        self.host = conf['host']
-        self.port = conf['port']
+    def __init__(self, username, password, host, port):
+        self.user = username
+        self.password = password
+        self.host = host
+        self.port = port
         rpc_address = 'http://{host}:{port}'.format(host=self.host, port=self.port)
         transport = SupervisorTransport(self.user, self.password, rpc_address)
         self.server = ServerProxy(uri=rpc_address, transport=transport)

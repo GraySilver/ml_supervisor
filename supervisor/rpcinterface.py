@@ -247,7 +247,11 @@ class SupervisorNamespaceRPCInterface:
         self._create_process_conf(name=name, cmd=cmd, file_path=process_file_path,
                                   stderr_logfile=stderr_logfile, stdout_logfile=stdout_logfile)
 
-        return self.reloadConfig()
+        added, changed, removed = self.reloadConfig()[0]
+        for i in added:
+            self.addProcessGroup(i)
+
+        return {'added': added, 'changed': changed, 'removed': removed}
 
     def auto_run(self, name, cmd):
         self.auto_config(name=name, cmd=cmd)
